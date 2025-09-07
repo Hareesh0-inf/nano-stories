@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nano Stories - AI Brand Storytelling</title>
+    <meta name="description" content="Create compelling brand stories with AI-generated images using Nano Banana technology">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🖼️</text></svg>">
+</head>
+<body>
+    <div id="app">
+        <!-- Skip to main content link for screen readers -->
+        <a href="#main-content" class="skip-link">Skip to main content</a>
+
+        <!-- Header -->
+        <header class="app-header" role="banner">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>Nano Stories</h1>
+                    <span class="tagline">AI-Powered Brand Storytelling</span>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-ghost"
+                            onclick="window.location.reload()"
+                            aria-label="Start a new project"
+                            title="Start a new project">New Project</button>
+                </div>
+            </div>
+
+            <!-- Progress Indicator -->
+            <div class="progress-container" role="progressbar"
+                 aria-valuenow="0"
+                 aria-valuemin="0"
+                 aria-valuemax="100"
+                 aria-label="Project completion progress">
+                <div class="progress-bar">
+                    <div id="progressBar" class="progress-fill" style="width: 0%"></div>
+                </div>
+                <div class="progress-text">
+                    <span id="progressText" aria-live="polite">0% Complete</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="workflow-nav" role="navigation" aria-label="Workflow steps">
+            <div class="nav-container">
+                <div class="nav-item" data-step="project" role="button" tabindex="0"
+                     aria-label="Project setup step" aria-current="step">
+                    <div class="nav-icon" aria-hidden="true">📋</div>
+                    <div class="nav-label">Project</div>
+                </div>
+                <div class="nav-connector" aria-hidden="true"></div>
+                <div class="nav-item" data-step="character" role="button" tabindex="0"
+                     aria-label="Character creation step">
+                    <div class="nav-icon" aria-hidden="true">👤</div>
+                    <div class="nav-label">Character</div>
+                </div>
+                <div class="nav-connector" aria-hidden="true"></div>
+                <div class="nav-item" data-step="product" role="button" tabindex="0"
+                     aria-label="Product upload step">
+                    <div class="nav-icon" aria-hidden="true">📦</div>
+                    <div class="nav-label">Product</div>
+                </div>
+                <div class="nav-connector" aria-hidden="true"></div>
+                <div class="nav-item" data-step="background" role="button" tabindex="0"
+                     aria-label="Background setup step">
+                    <div class="nav-icon" aria-hidden="true">🎨</div>
+                    <div class="nav-label">Background</div>
+                </div>
+                <div class="nav-connector" aria-hidden="true"></div>
+                <div class="nav-item" data-step="story" role="button" tabindex="0"
+                     aria-label="Story writing step">
+                    <div class="nav-icon" aria-hidden="true">📖</div>
+                    <div class="nav-label">Story</div>
+                </div>
+                <div class="nav-connector" aria-hidden="true"></div>
+                <div class="nav-item" data-step="generate" role="button" tabindex="0"
+                     aria-label="Image generation step">
+                    <div class="nav-icon" aria-hidden="true">⚡</div>
+                    <div class="nav-label">Generate</div>
+                </div>
+                <div class="nav-connector" aria-hidden="true"></div>
+                <div class="nav-item" data-step="gallery" role="button" tabindex="0"
+                     aria-label="Image gallery step">
+                    <div class="nav-icon" aria-hidden="true">🖼️</div>
+                    <div class="nav-label">Gallery</div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content" id="main-content" role="main">
+            <!-- Project Section -->
+            <section id="project-section" class="workflow-section" role="region" aria-labelledby="project-heading">
+                <div class="section-container">
+                    <div class="section-header">
+                        <h2 id="project-heading">Start Your Brand Story</h2>
+                        <p>Create a new project to begin crafting your AI-powered brand narrative</p>
+                    </div>
+                    <div class="section-content" role="form" aria-label="Project creation form">
+                        <!-- Project form will be inserted here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Character Section -->
+            <section id="character-section" class="workflow-section" style="display: none;" role="region" aria-labelledby="character-heading">
+                <div class="section-container">
+                    <div class="section-header">
+                        <h2 id="character-heading">Define Your Character</h2>
+                        <p>Create the main character that will represent your brand in the story</p>
+                    </div>
+                    <div class="section-content" role="form" aria-label="Character creation form">
+                        <!-- Character form will be inserted here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Product Section -->
+            <section id="product-section" class="workflow-section" style="display: none;" role="region" aria-labelledby="product-heading">
+                <div class="section-container">
+                    <div class="section-header">
+                        <h2 id="product-heading">Upload Your Product</h2>
+                        <p>Add the product image that will be featured in your brand story</p>
+                    </div>
+                    <div class="section-content" role="form" aria-label="Product upload form">
+                        <!-- Product form will be inserted here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Background Section -->
+            <section id="background-section" class="workflow-section" style="display: none;" role="region" aria-labelledby="background-heading">
+                <div class="section-container">
+                    <div class="section-header">
+                        <h2 id="background-heading">Set the Scene</h2>
+                        <p>Define the background and atmosphere for your brand story</p>
+                    </div>
+                    <div class="section-content" role="form" aria-label="Background setup form">
+                        <!-- Background form will be inserted here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Story Section -->
+            <section id="story-section" class="workflow-section" style="display: none;" role="region" aria-labelledby="story-heading">
+                <div class="section-container">
+                    <div class="section-header">
+                        <h2 id="story-heading">Write Your Story</h2>
+                        <p>Craft the compelling narrative that brings all elements together</p>
+                    </div>
+                    <div class="section-content" role="form" aria-label="Story writing form">
+                        <!-- Story form will be inserted here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gallery Section -->
+            <section id="gallery-section" class="workflow-section" style="display: none;" role="region" aria-labelledby="gallery-heading">
+                <div class="section-container">
+                    <div class="section-header">
+                        <h2 id="gallery-heading">Your Generated Images</h2>
+                        <p>Review and select your favorite brand storytelling images</p>
+                    </div>
+                    <div class="section-content" role="grid" aria-label="Generated images gallery">
+                        <!-- Image gallery will be inserted here -->
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer" role="contentinfo">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Powered by <strong>Nano Banana</strong> AI Technology</p>
+                    <p>© 2025 Nano Stories - AI Brand Storytelling Platform</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#" onclick="alert('Help documentation coming soon!')" aria-label="Open help documentation">Help</a>
+                    <a href="#" onclick="alert('About Nano Stories coming soon!')" aria-label="Learn more about Nano Stories">About</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="src/api.js"></script>
+    <script src="src/components/project-form.js"></script>
+    <script src="src/components/character-form.js"></script>
+    <script src="src/components/product-form.js"></script>
+    <script src="src/components/background-form.js"></script>
+    <script src="src/components/story-form.js"></script>
+    <script src="src/components/image-gallery.js"></script>
+    <script src="src/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<htm    <script>
+        const API_BASE = 'http://127.0.0.1:8000';
+
+        // Function to handle image URLs
+        function getImageUrl(originalUrl) {
+            if (originalUrl && (originalUrl.includes('/mock-images/') || originalUrl.includes('generated_'))) {
+                return '/uploads/mock-images/placeholder.png';
+            }
+            return originalUrl;
+        }
+
+        async function testAPI() {
+            try {
+                const response = await fetch(`${API_BASE}/api/v1/projects/1/generate`, {
+                    method: 'POST'
+                });
+                const data = await response.json();
+                const firstImageUrl = getImageUrl(data.images[0].image_url);
+                document.getElementById('result').innerHTML = `
+                    <p>Status: ${response.status}</p>
+                    <p>Images: ${data.images.length}</p>
+                    <p>Original URL: ${data.images[0].image_url}</p>
+                    <p>Display URL: ${firstImageUrl}</p>
+                    <img src="${firstImageUrl}" alt="Test Image" style="max-width: 200px;">
+                `;
+            } catch (error) {
+                document.getElementById('result').innerHTML = `<p>Error: ${error.message}</p>`;
+            }
+        }
+
+        // Apply URL conversion to existing images
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.src = getImageUrl(img.src);
+            });
+        });
+    </script>tle>Image Test</title>
+</head>
+<body>
+    <h1>Testing Image Display</h1>
+    <div>
+        <h2>Mock Image URL:</h2>
+        <img src="/mock-images/fused_story_image_1_123456789.png" alt="Mock Image" style="max-width: 300px;">
+    </div>
+    <div>
+        <h2>Placeholder Image URL:</h2>
+        <img src="/uploads/mock-images/placeholder.png" alt="Placeholder Image" style="max-width: 300px;">
+    </div>
+    <div>
+        <h2>Backend API Test:</h2>
+        <button onclick="testAPI()">Test API</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://127.0.0.1:8000';
+
+        async function testAPI() {
+            try {
+                const response = await fetch(`${API_BASE}/api/v1/projects/1/generate`, {
+                    method: 'POST'
+                });
+                const data = await response.json();
+                document.getElementById('result').innerHTML = `
+                    <p>Status: ${response.status}</p>
+                    <p>Images: ${data.images.length}</p>
+                    <p>First image URL: ${data.images[0].image_url}</p>
+                `;
+            } catch (error) {
+                document.getElementById('result').innerHTML = `<p>Error: ${error.message}</p>`;
+            }
+        }
+    </script>
+</body>
+</html>

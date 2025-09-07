@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      - DATABASE_URL=sqlite:///./nano_stories.db
+    volumes:
+      - ./backend/uploads:/app/uploads
+      - ./backend/nano_stories.db:/app/nano_stories.db
+    networks:
+      - nano-stories
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - nano-stories
+
+networks:
+  nano-stories:
+    driver: bridge
+
+volumes:
+  uploads:
+  database:

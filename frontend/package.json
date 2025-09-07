@@ -1,0 +1,30 @@
+{
+  "name": "nano-stories-frontend",
+  "version": "1.0.0",
+  "description": "Frontend for Nano Stories brand storytelling application",
+  "main": "app.js",
+  "scripts": {
+    "lint": "eslint app.js",
+    "lint:fix": "eslint app.js --fix"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es2021": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+      "ecmaVersion": "latest",
+      "sourceType": "module"
+    },
+    "rules": {
+      "indent": ["error", 2],
+      "linebreak-style": ["error", "unix"],
+      "quotes": ["error", "single"],
+      "semi": ["error", "always"]
+    }
+  }
+}

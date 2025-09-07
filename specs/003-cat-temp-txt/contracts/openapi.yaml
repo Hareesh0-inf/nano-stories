@@ -1,0 +1,192 @@
+openapi: 3.0.3
+info:
+  title: Brand Storytelling API
+  version: 1.0.0
+  description: API for brand storytelling web application
+
+paths:
+  /projects:
+    post:
+      summary: Create a new project
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+              required:
+                - name
+      responses:
+        '201':
+          description: Project created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+                  created_at:
+                    type: string
+
+  /projects/{project_id}/character:
+    post:
+      summary: Generate character
+      parameters:
+        - name: project_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                details:
+                  type: string
+                personality:
+                  type: string
+              required:
+                - details
+      responses:
+        '200':
+          description: Character generated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  image_url:
+                    type: string
+
+  /projects/{project_id}/product:
+    post:
+      summary: Upload product image
+      parameters:
+        - name: project_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                image:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Product uploaded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+
+  /projects/{project_id}/background:
+    post:
+      summary: Generate background
+      parameters:
+        - name: project_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                scene_details:
+                  type: string
+                lighting:
+                  type: string
+              required:
+                - scene_details
+      responses:
+        '200':
+          description: Background generated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  image_url:
+                    type: string
+
+  /projects/{project_id}/story:
+    post:
+      summary: Set story
+      parameters:
+        - name: project_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                story_text:
+                  type: string
+              required:
+                - story_text
+      responses:
+        '200':
+          description: Story set
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+
+  /projects/{project_id}/generate:
+    post:
+      summary: Generate images
+      parameters:
+        - name: project_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Images generated
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    prompt:
+                      type: string
+                    image_url:
+                      type: string
